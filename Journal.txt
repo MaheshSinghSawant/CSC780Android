@@ -1,1 +1,3 @@
 Week 1: Design Document
+Issues :
+Designing layout according to Google Material design document.
