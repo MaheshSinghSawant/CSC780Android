@@ -1,0 +1,2 @@
+Week 1: Design Document
+Issues faced: Designing the UI based on the Google Material Design guidelines.
