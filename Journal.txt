@@ -1,1 +1,2 @@
-Week 1: Design Document
+Issues Faced:
+1. Designing layout according the Google Material design document. 
