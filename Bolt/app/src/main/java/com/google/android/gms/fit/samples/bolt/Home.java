@@ -9,12 +9,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.ImageButton;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.google.android.gms.fit.samples.basicsensorsapi.R;
 
 public class Home extends AppCompatActivity implements View.OnClickListener{
 
-
+    private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle drawerToggle;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
     ImageButton play;
     ImageButton pause;
@@ -27,7 +35,32 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         findViewById(R.id.play_timer).setOnClickListener(this);
         findViewById(R.id.stop_timer).setOnClickListener(this);
         chronometer = (Chronometer) findViewById(R.id.chronometer);
+// Instantiate toolbar
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+        // Obtain DrawerLayout
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        // Enable Drawer toggle actions
+        drawerToggle = new ActionBarDrawerToggle(this,
+                drawerLayout,
+                toolbar,
+                R.string.drawer_opened,
+                R.string.drawer_closed);
+        drawerLayout.setDrawerListener(drawerToggle);
+
+        NavigationView navi = (NavigationView) findViewById(R.id.navi);
+        navi.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    default:
+                }
+                drawerLayout.closeDrawers();
+                return true;
+            }
+        });
     }
 
     @Override

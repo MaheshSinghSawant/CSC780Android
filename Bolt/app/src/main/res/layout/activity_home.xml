@@ -1,5 +1,41 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/drawer_child_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <!-- Toolbar -->
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
+
+            <FrameLayout
+                android:id="@+id/fragment_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </RelativeLayout>
+    </android.support.design.widget.CoordinatorLayout>
+
+
+
+
+
+<RelativeLayout  android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -16,10 +52,9 @@
         android:onClick="showMap"
         android:background="#00ffffff"
         android:id="@+id/map"
+        android:layout_marginTop="52dp"
         android:layout_below="@+id/stop_timer"
-        android:layout_alignRight="@+id/stop_timer"
-        android:layout_alignEnd="@+id/stop_timer"
-        android:layout_marginTop="69dp" />
+        android:layout_alignEnd="@+id/stop_timer" />
 
     <ImageButton
         android:layout_width="100dp"
@@ -62,6 +97,18 @@
         android:onClick="showGoogleFitActivity"
 
         android:layout_below="@+id/map"
-        android:layout_alignStart="@+id/play_timer" />
+        android:layout_alignStart="@+id/play_timer"
+        android:layout_marginTop="47dp" />
 
 </RelativeLayout>
+    <!-- Navigation bar -->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navi"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        elevation="15dp"
+        app:headerLayout="@layout/navbar_header"
+        app:menu="@menu/menu_drawer" />
+
+</android.support.v4.widget.DrawerLayout>
