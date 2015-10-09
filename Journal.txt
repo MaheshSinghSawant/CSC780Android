@@ -1,2 +1,16 @@
 Week 1: Design Document
 Issues faced: Designing the UI based on the Google Material Design guidelines.
+
+Week 2: Creating Layout Design
+a.Created the Splash Screen
+b. Created the home page with the Chronometer and the stop and play buttons
+
+Week 3: Created Google Map Activity
+a. Implemented the Google Map activity.
+b. Looked into Google Fit API.
+Issues Faced: Issues with the Navigation Drawer.
+
+Week 4: Integrated Google Fit API.
+a. Created Navigation Drawer
+b. Used the Sensor API of Google Fit.
+Issues Faced: Authentication Issues with the Google Fit API/
