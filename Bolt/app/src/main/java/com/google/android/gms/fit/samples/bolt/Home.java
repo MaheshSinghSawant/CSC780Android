@@ -35,7 +35,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         findViewById(R.id.play_timer).setOnClickListener(this);
         findViewById(R.id.stop_timer).setOnClickListener(this);
         chronometer = (Chronometer) findViewById(R.id.chronometer);
-// Instantiate toolbar
+        // Instantiate toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -49,8 +49,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 R.string.drawer_closed);
         drawerLayout.setDrawerListener(drawerToggle);
 
-        NavigationView navi = (NavigationView) findViewById(R.id.navi);
-        navi.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        NavigationView nv = (NavigationView) findViewById(R.id.navi);
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {

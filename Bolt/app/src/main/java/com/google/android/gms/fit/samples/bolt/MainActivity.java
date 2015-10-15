@@ -20,6 +20,7 @@ import android.content.IntentSender;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -51,16 +52,10 @@ import java.util.concurrent.TimeUnit;
 
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
     public static final String TAG = "BasicSensorsApi";
-    // [START auth_variable_references]
-    private static final int REQUEST_OAUTH = 1;
 
-    /**
-     *  Track whether an authorization activity is stacking over the current activity, i.e. when
-     *  a known auth error is being resolved, such as showing the account chooser or presenting a
-     *  consent dialog. This avoids common duplications as might happen on screen rotations, etc.
-     */
+    private static final int REQUEST_OAUTH = 1;
     private static final String AUTH_PENDING = "auth_state_pending";
     private boolean authInProgress = false;
 
@@ -81,7 +76,7 @@ public class MainActivity extends ActionBarActivity {
         // Put application specific code here.
         // [END auth_oncreate_setup_beginning]
         setContentView(R.layout.activity_main);
-        // This method sets up our custom logger, which will print all log messages to the device
+        // This method sets up custom logger, which will print all log messages to the device
         // screen, as well as to adb logcat.
         initializeLogging();
 
@@ -105,7 +100,7 @@ public class MainActivity extends ActionBarActivity {
      *  multiple accounts on the device and needing to specify which account to use, etc.
      */
     private void buildFitnessClient() {
-        // Create the Google API Client
+
         mClient = new GoogleApiClient.Builder(this)
                 .addApi(Fitness.SENSORS_API)
                 .addScope(new Scope(Scopes.FITNESS_LOCATION_READ))
