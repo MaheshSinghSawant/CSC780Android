@@ -14,3 +14,10 @@ Week 4: Integrated Google Fit API.
 a. Created Navigation Drawer
 b. Used the Sensor API of Google Fit.
 Issues Faced: Authentication Issues with the Google Fit API/
+
+Week 5 : 
+
+a.Read documentation on Animation.
+b.Implemented an animation to “fill up glass” to show how much water has been consumed.
+c.Integrated hamburger icon to navigation drawer.
+d.Research on sensors used in Google Fit API.
