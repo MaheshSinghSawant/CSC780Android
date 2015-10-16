@@ -27,5 +27,6 @@ limitations under the License.
     <string name="title_activity_home">bolt!</string>
     <string name="drawer_opened">Drawer Opened</string>
     <string name="drawer_closed">Drawer Closed</string>
+    <string name="title_activity_nutrition">Nutrition</string>
 
 </resources>

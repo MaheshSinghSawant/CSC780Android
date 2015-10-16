@@ -55,13 +55,24 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    default:
+                    default: {
+                        Intent a = new Intent(Home.this, Nutrition.class);
+                        startActivity(a);
+                    }
                 }
                 drawerLayout.closeDrawers();
                 return true;
             }
         });
     }
+
+    // Hamburger icon and sync with drawer
+    @Override
+    public void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        drawerToggle.syncState();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -96,6 +107,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
         return super.onOptionsItemSelected(item);
     }
+
+
 
     @Override
     public void onClick(View v){

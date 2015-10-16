@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.google.android.gms.fit.samples.basicsensorsapi" >
 
@@ -47,9 +46,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
         <activity
             android:name="com.google.android.gms.fit.samples.bolt.MapsActivity"
             android:label="@string/title_activity_maps" >
@@ -62,6 +58,14 @@
         <activity
             android:name="com.google.android.gms.fit.samples.bolt.Home"
             android:label="@string/title_activity_home" >
+        </activity>
+        <activity
+            android:name="com.google.android.gms.fit.samples.Nutrition"
+            android:label="@string/title_activity_nutrition" >
+        </activity>
+        <activity
+            android:name="com.google.android.gms.fit.samples.bolt.Nutrition"
+            android:label="@string/title_activity_nutrition" >
         </activity>
     </application>
 
