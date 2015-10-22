@@ -55,10 +55,35 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    default: {
-                        Intent a = new Intent(Home.this, Nutrition.class);
+                    case R.id.item_home:
+                    {
+                        Intent a= new Intent(Home.this, Home.class);
                         startActivity(a);
+                        break;
                     }
+
+                    case R.id.item_nutrition:
+                    {
+                        Intent b= new Intent(Home.this, Nutrition.class);
+                        startActivity(b);
+                        break;
+                    }
+
+                    case R.id.item_statistics:
+                    {
+                        Intent c= new Intent(Home.this, Statistics.class);
+                        startActivity(c);
+                        break;
+                    }
+
+                    case R.id.item_history:
+                    {
+                        Intent d= new Intent(Home.this, History.class);
+                        startActivity(d);
+                        break;
+                    }
+
+                    default:
                 }
                 drawerLayout.closeDrawers();
                 return true;

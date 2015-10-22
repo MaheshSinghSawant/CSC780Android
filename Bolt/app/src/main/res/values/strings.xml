@@ -28,5 +28,7 @@ limitations under the License.
     <string name="drawer_opened">Drawer Opened</string>
     <string name="drawer_closed">Drawer Closed</string>
     <string name="title_activity_nutrition">Nutrition</string>
+    <string name="title_activity_statistics">Statistics</string>
+    <string name="title_activity_history">History</string>
 
 </resources>

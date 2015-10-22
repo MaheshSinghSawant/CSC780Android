@@ -101,6 +101,9 @@
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
+
+
+
     <!-- Navigation bar -->
     <android.support.design.widget.NavigationView
         android:id="@+id/navi"
@@ -110,5 +113,20 @@
         elevation="15dp"
         app:headerLayout="@layout/navbar_header"
         app:menu="@menu/menu_drawer" />
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="150dp"-->
+        <!--android:layout_height="150dp"-->
+        <!--android:id="@+id/fragment_container"-->
+        <!--android:background="#00ffaa"-->
+        <!--android:layout_marginBottom="100dp"-->
+        <!--android:layout_marginTop="375dp"-->
+        <!--android:layout_marginRight="200dp"-->
+        <!--android:layout_marginLeft="50dp">-->
+
+
+
+
+    <!--</RelativeLayout>-->
 
 </android.support.v4.widget.DrawerLayout>

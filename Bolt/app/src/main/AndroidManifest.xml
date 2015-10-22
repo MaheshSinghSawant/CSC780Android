@@ -67,6 +67,14 @@
             android:name="com.google.android.gms.fit.samples.bolt.Nutrition"
             android:label="@string/title_activity_nutrition" >
         </activity>
+        <activity
+            android:name="com.google.android.gms.fit.samples.bolt.Statistics"
+            android:label="@string/title_activity_statistics" >
+        </activity>
+        <activity
+            android:name="com.google.android.gms.fit.samples.bolt.History"
+            android:label="@string/title_activity_history" >
+        </activity>
     </application>
 
 </manifest>
