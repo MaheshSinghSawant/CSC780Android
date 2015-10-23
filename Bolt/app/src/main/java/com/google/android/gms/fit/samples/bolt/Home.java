@@ -2,6 +2,10 @@ package com.google.android.gms.fit.samples.bolt;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.design.widget.NavigationView;
@@ -18,18 +22,25 @@ import android.widget.TextView;
 
 import com.google.android.gms.fit.samples.basicsensorsapi.R;
 
-public class Home extends AppCompatActivity implements View.OnClickListener{
+public class Home extends AppCompatActivity implements View.OnClickListener, SensorEventListener, StepListener{
 
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     static final int REQUEST_IMAGE_CAPTURE = 1;
-
     ImageButton play;
     ImageButton pause;
     ImageButton stop;
     private Chronometer chronometer;
     TextView chronometerView;
+
+    private TextView textView;
+    private SimpleStepDetector simpleStepDetector;
+    private SensorManager sensorManager;
+    private Sensor accel;
+    private static final String TEXT_NUM_STEPS = "Steps: ";
+    private int numSteps;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,30 +71,26 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.item_home:
-                    {
-                        Intent a= new Intent(Home.this, Home.class);
+                    case R.id.item_home: {
+                        Intent a = new Intent(Home.this, Home.class);
                         startActivity(a);
                         break;
                     }
 
-                    case R.id.item_nutrition:
-                    {
-                        Intent b= new Intent(Home.this, Nutrition.class);
+                    case R.id.item_nutrition: {
+                        Intent b = new Intent(Home.this, Nutrition.class);
                         startActivity(b);
                         break;
                     }
 
-                    case R.id.item_statistics:
-                    {
-                        Intent c= new Intent(Home.this, Statistics.class);
+                    case R.id.item_statistics: {
+                        Intent c = new Intent(Home.this, Statistics.class);
                         startActivity(c);
                         break;
                     }
 
-                    case R.id.item_history:
-                    {
-                        Intent d= new Intent(Home.this, History.class);
+                    case R.id.item_history: {
+                        Intent d = new Intent(Home.this, History.class);
                         startActivity(d);
                         break;
                     }
@@ -94,6 +101,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 return true;
             }
         });
+
+        textView = (TextView) findViewById(R.id.step_count);
+        textView.setTextSize(30);
+//        setContentView(textView);
+
+        // Get an instance of the SensorManager
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        simpleStepDetector = new SimpleStepDetector();
+        simpleStepDetector.registerListener(this);
     }
 
     // Hamburger icon and sync with drawer
@@ -151,6 +168,38 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 chronometer.stop();
                 break;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        numSteps = 0;
+        textView.setText(TEXT_NUM_STEPS + numSteps);
+        sensorManager.registerListener(this, accel, SensorManager.SENSOR_DELAY_FASTEST);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            simpleStepDetector.updateAccel(
+                    event.timestamp, event.values[0], event.values[1], event.values[2]);
+        }
+    }
+
+    @Override
+    public void step(long timeNs) {
+        numSteps++;
+        textView.setText(TEXT_NUM_STEPS + numSteps);
     }
 
 }
