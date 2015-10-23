@@ -6,14 +6,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    tools:context="com.google.android.gms.fit.samples.bolt.Nutrition">
 
 
 
-<RelativeLayout
+<LinearLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-    >
+        android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Food_name"
+        android:hint="name"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Food_id"
+        android:hint="id"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Food_calories"
+        android:hint="calories"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addFood"
+        android:text="Insert"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="viewFood"
+        android:text="Read"
+
+        />
+
 
     <ImageView
         android:id="@+id/image_view"
@@ -22,16 +63,11 @@
         android:layout_gravity="left|top"
         android:src="@drawable/ic_glass"
         android:onClick="animate"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 
 
-
-</RelativeLayout>
+</LinearLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/navi"

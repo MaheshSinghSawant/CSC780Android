@@ -60,7 +60,7 @@
             android:label="@string/title_activity_home" >
         </activity>
         <activity
-            android:name="com.google.android.gms.fit.samples.Nutrition"
+            android:name="com.google.android.gms.fit.samples.bolt.DataListActivity"
             android:label="@string/title_activity_nutrition" >
         </activity>
         <activity

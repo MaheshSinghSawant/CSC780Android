@@ -12,6 +12,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.fit.samples.basicsensorsapi.R;
 
@@ -25,6 +32,12 @@ public class Nutrition extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private boolean full = false;
+    Cursor cursor;
+    EditText Id, Name, Calories;
+    Context context = this;
+    //object of NutritionDbHelper and SQLiteDatabase required
+    NutritionDbHelper nutritionDbHelper;
+    SQLiteDatabase sqlLiteDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +46,10 @@ public class Nutrition extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.image_view);
         emptyGlass = (AnimatedVectorDrawable) getDrawable(R.drawable.avd_glass_empty);
         fillGlass = (AnimatedVectorDrawable) getDrawable(R.drawable.avd_glass_fill);
+
+        Id = (EditText) findViewById(R.id.Food_id);
+        Name = (EditText) findViewById(R.id.Food_name);
+        Calories = (EditText) findViewById(R.id.Food_calories);
 
         // Instantiate toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -98,6 +115,33 @@ public class Nutrition extends AppCompatActivity {
     public void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         drawerToggle.syncState();
+    }
+
+    //Define the method to add food
+    public void addFood(View view){
+
+
+        //First get all info from Textfields
+        String name = Name.getText().toString();
+        String id = Id.getText().toString();
+        String cal = Calories.getText().toString();
+        // Then initialize the nutritionDbHelper object by passing context object
+        nutritionDbHelper = new NutritionDbHelper(context);
+        // Initialize the sqlLiteDatabase to write
+        sqlLiteDatabase = nutritionDbHelper.getWritableDatabase();
+        //Call the add addInformation method
+        nutritionDbHelper.addInformation(id,name,cal,sqlLiteDatabase);
+        Toast.makeText(getBaseContext(),"Data Saved", Toast.LENGTH_LONG).show();
+        nutritionDbHelper.close(); //close db
+    }
+
+
+    public void viewFood(View view){
+
+        Intent intent = new Intent(this,DataListActivity.class);
+        startActivity(intent);
+
+
     }
 
     public void animate(View view) {
