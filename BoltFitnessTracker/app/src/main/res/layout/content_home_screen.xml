@@ -52,6 +52,65 @@
         android:layout_marginTop="175dp"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/kcal"
+        android:fontFamily="sans-serif"
+        android:textSize="18dp"
+        android:textColor="#006064"
+        android:text="kcal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="175dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bpm"
+        android:fontFamily="sans-serif"
+        android:textSize="18dp"
+        android:textColor="#006064"
+        android:text="bpm"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="225dp"
+        />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#006064"
+        android:layout_below="@+id/chronometer"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#006064"
+        android:layout_below="@+id/heartbeat_icon"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/kmph"
+        android:fontFamily="sans-serif"
+        android:textSize="18dp"
+        android:textColor="#006064"
+        android:text="kmph"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="275dp"
+        android:layout_marginTop="225dp"
+        />
+
+
     <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/btn_select_activity"
         android:layout_width="350dp"

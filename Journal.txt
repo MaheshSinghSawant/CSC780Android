@@ -27,3 +27,11 @@ Week 6:
 a. Implemented a Pedometer into the app using the accelerometer sensor.
 b. Integrate database to for Nutrition.
 Issues Faced: Progress Wheel animation
+
+Week 6 :
+
+a. Changed and Improved the UI
+b. Added indicators for steps, speed, heartbeat and calories.
+c. Researched Google Fit.
+
+Issues Faced: Pedometer runs as UI thread which needs to be converted into a service.

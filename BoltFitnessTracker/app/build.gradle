@@ -28,4 +28,5 @@ dependencies {
     compile 'com.github.medyo:fancybuttons:1.5@aar'
     compile 'de.hdodenhof:circleimageview:2.0.0'
     compile 'com.google.android.gms:play-services:8.1.0'
+    compile 'com.github.lzyzsd:circleprogress:1.1.0@aar'
 }
