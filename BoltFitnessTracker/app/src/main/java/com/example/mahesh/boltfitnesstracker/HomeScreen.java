@@ -7,6 +7,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -23,22 +24,22 @@ import android.widget.TextView;
 public class HomeScreen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
                    SensorEventListener,
-                   StepListener {
+                   StepListener, View.OnClickListener {
 
 
     private TextView textView;
     private SimpleStepDetector simpleStepDetector;
     private SensorManager sensorManager;
     private Sensor accel;
-    private static final String TEXT_NUM_STEPS = " steps";
+    private static final String TEXT_NUM_STEPS = " ";
     private int numSteps;
-
+    private Chronometer chronometer;
+    TextView chronometerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Chronometer chronometer;
-        TextView chronometerView;
+
 
         final ImageButton playButton;
         ImageButton pauseButton;
@@ -48,7 +49,8 @@ public class HomeScreen extends AppCompatActivity
         setContentView(R.layout.activity_home_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        findViewById(R.id.play_timer).setOnClickListener(this);
+        findViewById(R.id.stop_timer).setOnClickListener(this);
         chronometer = (Chronometer) findViewById(R.id.chronometer);
         Typeface myTypeface = Typeface.createFromAsset(this.getAssets(),"DS-DIGI.TTF");
         chronometerView = (TextView) findViewById(R.id.chronometer);
@@ -165,6 +167,19 @@ public class HomeScreen extends AppCompatActivity
         numSteps = 0;
         textView.setText(numSteps + TEXT_NUM_STEPS);
         sensorManager.registerListener(this, accel, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    public void onClick(View v){
+        switch(v.getId()){
+            case R.id.play_timer:
+                chronometer.setBase(SystemClock.elapsedRealtime());
+                chronometer.start();
+                break;
+            case R.id.stop_timer:
+                chronometer.stop();
+                break;
+        }
     }
 
     @Override

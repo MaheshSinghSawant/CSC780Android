@@ -27,9 +27,30 @@
         android:layout_height="wrap_content"
         android:id="@+id/step_count"
         android:fontFamily="sans-serif"
-        android:textSize="10dp"
+        android:textSize="5dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/chronometer"/>
+        android:layout_below="@+id/chronometer"
+        android:textColor="#006064"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="160dp"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/step_count_steps"
+        android:fontFamily="sans-serif"
+        android:textSize="18dp"
+        android:textColor="#006064"
+        android:text="steps"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="275dp"
+        android:layout_marginTop="175dp"
+        />
 
     <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/btn_select_activity"
@@ -197,7 +218,7 @@
         android:id="@+id/mapsicon"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:src="@drawable/mapbutn"
+        android:src="@drawable/maps_icon"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="15dp"
         android:layout_marginLeft="250dp"
