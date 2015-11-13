@@ -35,3 +35,9 @@ b. Added indicators for steps, speed, heartbeat and calories.
 c. Researched Google Fit.
 
 Issues Faced: Pedometer runs as UI thread which needs to be converted into a service.
+
+
+Week 7:
+
+a.Researched changes made to user permissions for google fit while operating on marshmallow.
+b.Implemented Google Fit like animation on Nutrition page.

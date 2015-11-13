@@ -13,33 +13,139 @@
     tools:showIn="@layout/app_bar_nutrition_screen"
     tools:context="com.example.mahesh.boltfitnesstracker.NutritionScreen">
 
-    <com.github.lzyzsd.circleprogress.DonutProgress
-        android:layout_marginTop="30dp"
-        android:id="@+id/donut_progress"
-        android:layout_width="175dp"
-        android:layout_height="175dp"
-        custom:donut_progress="75"
+
+
+    <TextView
+        android:id="@+id/textPercentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        custom:donut_finished_color = "@color/colorPrimary"
-        custom:donut_finished_stroke_width = "15dp"
-        custom:donut_unfinished_stroke_width = "15dp"
-        custom:donut_text= "kcal"
-        custom:donut_text_size= "20dp"
-        custom:donut_text_color= "@color/colorPrimary"
+        android:layout_centerVertical="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40sp"/>
 
-
-
-        />
-
-
-    <com.github.lzyzsd.circleprogress.CircleProgress
-        android:id="@+id/circle_progress"
-        android:layout_marginTop="300dp"
+    <TextView
+        android:id="@+id/textRemaining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textPercentage"
         android:layout_centerHorizontal="true"
+        android:maxWidth="200dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
 
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        custom:circle_progress="40"/>
+    <com.hookedonplay.decoviewlib.DecoView
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
+        custom:dv_lineWidth="26dp"
+        android:id="@+id/dynamicArcView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+    </com.hookedonplay.decoviewlib.DecoView>
+    <TextView
+        android:id="@+id/textActivity1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal"
+        android:paddingLeft="4dp"
+        android:layout_below="@+id/dynamicArcView"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Calories Consumed: "-->
+        <!--android:textSize="15dp"-->
+        <!--android:textColor="@color/colorPrimaryDark"-->
+        <!--/>-->
+
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="#006064"-->
+        <!--android:layout_marginTop="275dp"-->
+        <!--/>-->
+
+    <!--<com.github.lzyzsd.circleprogress.DonutProgress-->
+        <!--android:layout_marginTop="30dp"-->
+        <!--android:id="@+id/donut_progress"-->
+        <!--android:layout_width="175dp"-->
+        <!--android:layout_height="175dp"-->
+        <!--custom:donut_progress="75"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--custom:donut_finished_color = "#EF6C00"-->
+        <!--custom:donut_finished_stroke_width = "15dp"-->
+        <!--custom:donut_unfinished_stroke_width = "15dp"-->
+        <!--custom:donut_text= "kcal"-->
+        <!--custom:donut_text_size= "20dp"-->
+        <!--custom:donut_text_color= "@color/colorPrimary"-->
+        <!--/>-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Water Consumed: "-->
+        <!--android:textSize="15dp"-->
+        <!--android:textColor="@color/colorPrimaryDark"-->
+        <!--android:layout_marginTop="300dp"-->
+        <!--/>-->
+
+
+    <!--<mehdi.sakout.fancybuttons.FancyButton-->
+        <!--android:id="@+id/btn_add_calories"-->
+        <!--android:layout_width="350dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingBottom="10dp"-->
+        <!--android:paddingLeft="20dp"-->
+        <!--android:paddingRight="20dp"-->
+        <!--android:paddingTop="10dp"-->
+        <!--fancy:fb_borderColor="#FFFFFF"-->
+        <!--fancy:fb_borderWidth="1dp"-->
+        <!--fancy:fb_defaultColor="#006064"-->
+        <!--fancy:fb_focusColor="#0097A7"-->
+        <!--fancy:fb_fontIconResource="&#xf0f5;"-->
+        <!--fancy:fb_iconPosition="left"-->
+        <!--fancy:fb_radius="30dp"-->
+        <!--fancy:fb_text="  What did you eat today?"-->
+        <!--fancy:fb_textColor="#FFFFFF"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="220dp" />-->
+        <!--&lt;!&ndash;android:onClick="showActivities"&ndash;&gt;-->
+
+
+
+    <!--<com.github.lzyzsd.circleprogress.CircleProgress-->
+        <!--android:id="@+id/circle_progress"-->
+        <!--android:layout_marginTop="325dp"-->
+        <!--android:layout_centerHorizontal="true"-->
+
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="100dp"-->
+        <!--custom:circle_progress="40"/>-->
+
+    <!--<mehdi.sakout.fancybuttons.FancyButton-->
+        <!--android:id="@+id/btn_add_water"-->
+        <!--android:layout_width="350dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingBottom="10dp"-->
+        <!--android:paddingLeft="20dp"-->
+        <!--android:paddingRight="20dp"-->
+        <!--android:paddingTop="10dp"-->
+        <!--fancy:fb_borderColor="#FFFFFF"-->
+        <!--fancy:fb_borderWidth="1dp"-->
+        <!--fancy:fb_defaultColor="#006064"-->
+        <!--fancy:fb_focusColor="#0097A7"-->
+        <!--fancy:fb_fontIconResource="&#xf0fc;"-->
+        <!--fancy:fb_iconPosition="left"-->
+        <!--fancy:fb_radius="30dp"-->
+        <!--fancy:fb_text="  Click to add 100ml of water"-->
+        <!--fancy:fb_textColor="#FFFFFF"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="440dp" />-->
 
 
 </RelativeLayout>
