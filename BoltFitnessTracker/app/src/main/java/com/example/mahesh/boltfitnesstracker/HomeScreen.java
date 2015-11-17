@@ -1,13 +1,15 @@
 package com.example.mahesh.boltfitnesstracker;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Typeface;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,8 +20,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Chronometer;
-import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.util.concurrent.TimeUnit;
+
+import mehdi.sakout.fancybuttons.FancyButton;
 
 public class HomeScreen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -35,26 +40,56 @@ public class HomeScreen extends AppCompatActivity
     private int numSteps;
     private Chronometer chronometer;
     TextView chronometerView;
+    private boolean isBR = false;
+    private TextView displayTime;
+
+    private FancyButton playButton;
+    private FancyButton pauseButton;
+    private FancyButton stopButton;
+
+    private static final String play = "PLAY";
+    private static final String pause = "PAUSE";
+    private static final String stop = "STOP";
+
+    private long timeElapsed;
+    private boolean isPaused = false;
+    private boolean isCounting = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
-        final ImageButton playButton;
-        ImageButton pauseButton;
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+
+        playButton =  (FancyButton) findViewById(R.id.play_timer);
+        pauseButton = (FancyButton) findViewById(R.id.pause_timer);
+        stopButton =  (FancyButton) findViewById(R.id.stop_timer);
+
+        playButton.setTag(play);
+        pauseButton.setTag(pause);
+        stopButton.setTag(stop);
+
+        playButton.setOnClickListener(this);
+        pauseButton.setOnClickListener(this);
+        stopButton.setOnClickListener(this);
+
+
+        playButton.setVisibility(View.VISIBLE);
+        pauseButton.setVisibility(View.GONE);
+        stopButton.setVisibility(View.VISIBLE);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        findViewById(R.id.play_timer).setOnClickListener(this);
-        findViewById(R.id.stop_timer).setOnClickListener(this);
-        chronometer = (Chronometer) findViewById(R.id.chronometer);
+//        findViewById(R.id.play_timer).setOnClickListener(this);
+//        findViewById(R.id.stop_timer).setOnClickListener(this);
+//        chronometer = (Chronometer) findViewById(R.id.chronometer);
+//        Typeface myTypeface = Typeface.createFromAsset(this.getAssets(),"DS-DIGI.TTF");
+//        chronometerView = (TextView) findViewById(R.id.chronometer);
+//        chronometerView.setTypeface(myTypeface);
+
+        displayTime = (TextView) findViewById(R.id.display_time);
         Typeface myTypeface = Typeface.createFromAsset(this.getAssets(),"DS-DIGI.TTF");
-        chronometerView = (TextView) findViewById(R.id.chronometer);
-        chronometerView.setTypeface(myTypeface);
+        displayTime.setTypeface(myTypeface);
 
 
 
@@ -77,6 +112,78 @@ public class HomeScreen extends AppCompatActivity
         accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         simpleStepDetector = new SimpleStepDetector();
         simpleStepDetector.registerListener(this);
+
+
+
+
+    }
+
+
+    public void startTimer(){
+        Intent stepCounterIntent =  new Intent(this, StepCounterService.class);
+        if(isPaused){
+            stepCounterIntent.putExtra("pause_time", timeElapsed);
+        }
+        startService(stepCounterIntent);
+        if(!isBR){
+            registerReceiver(broadcastReceiver, new IntentFilter(StepCounterService.BROADCAST_ACTION));
+            isBR = true;
+        }
+
+        playButton.setVisibility(View.GONE);
+        pauseButton.setVisibility(View.VISIBLE);
+        isCounting = true;
+        isPaused = false;
+
+    }
+
+    public void pauseTimer(){
+        stopService(new Intent(this, StepCounterService.class));
+        if(isBR){
+            unregisterReceiver(broadcastReceiver);
+//            stopService(new Intent(this, StepCounterService.class));
+            isBR = false;
+        }
+        isPaused = true;
+        isCounting = false;
+        playButton.setVisibility(View.VISIBLE);
+        pauseButton.setVisibility(View.GONE);
+
+    }
+
+    public void stopTimer(){
+        stopService(new Intent(this, StepCounterService.class));
+        if(isBR){
+            unregisterReceiver(broadcastReceiver);
+            isBR = false;
+        }
+        isPaused = false;
+        isCounting = false;
+        timeElapsed = (long)0;
+
+        playButton.setVisibility(View.VISIBLE);
+        pauseButton.setVisibility(View.GONE);
+//        displayTime.setText("00:00:00");
+
+    }
+
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            timeElapsed = intent.getLongExtra("elapsed_time", (long)0);
+
+            displayTime.setText(formatTime(timeElapsed));
+//            Log.d("Counter", intent.getStringExtra("counter"));
+        }
+    };
+
+    private String formatTime(Long timeElapsed){
+
+        return String.format("%02d:%02d:%02d",
+                TimeUnit.MILLISECONDS.toHours(timeElapsed),
+                TimeUnit.MILLISECONDS.toMinutes(timeElapsed),
+                TimeUnit.MILLISECONDS.toSeconds(timeElapsed)
+                        - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timeElapsed)) );
     }
 
     public void showActivities(View v){
@@ -145,6 +252,8 @@ public class HomeScreen extends AppCompatActivity
 
          if (id == R.id.nav_nutrition_screen) {
             Intent intent = new Intent(this,NutritionScreen.class);
+             //set proper flags
+
             startActivity(intent);
 
         } else if (id == R.id.nav_history_screen) {
@@ -167,17 +276,40 @@ public class HomeScreen extends AppCompatActivity
         numSteps = 0;
         textView.setText(numSteps + TEXT_NUM_STEPS);
         sensorManager.registerListener(this, accel, SensorManager.SENSOR_DELAY_NORMAL);
+        //resume br listener
+        if(!isBR){
+            registerReceiver(broadcastReceiver, new IntentFilter(StepCounterService.BROADCAST_ACTION));
+            isBR = true;
+        }
+
+        if(isPaused) {
+            playButton.setVisibility(View.GONE);
+            pauseButton.setVisibility(View.VISIBLE);
+        } else {
+            playButton.setVisibility(View.VISIBLE);
+            pauseButton.setVisibility(View.GONE);
+        }
+
+        if(isCounting) {
+            displayTime.setText(formatTime(timeElapsed));
+        } else {
+            timeElapsed = 0;
+            displayTime.setText(formatTime(timeElapsed));
+        }
+
     }
 
     @Override
     public void onClick(View v){
-        switch(v.getId()){
-            case R.id.play_timer:
-                chronometer.setBase(SystemClock.elapsedRealtime());
-                chronometer.start();
+        switch(v.getTag().toString()){
+            case "PLAY":
+                startTimer();
                 break;
-            case R.id.stop_timer:
-                chronometer.stop();
+            case "PAUSE":
+                pauseTimer();
+                break;
+            case "STOP":
+                stopTimer();
                 break;
         }
     }
@@ -186,6 +318,10 @@ public class HomeScreen extends AppCompatActivity
     public void onPause() {
         super.onPause();
         sensorManager.unregisterListener(this);
+        if(isBR) {
+            unregisterReceiver(broadcastReceiver);
+            isBR = false;
+        }
     }
 
     @Override
