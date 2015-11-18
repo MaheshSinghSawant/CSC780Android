@@ -28,8 +28,8 @@ import mehdi.sakout.fancybuttons.FancyButton;
 
 public class HomeScreen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-                   SensorEventListener,
-                   StepListener, View.OnClickListener {
+        SensorEventListener,
+        StepListener, View.OnClickListener {
 
 
     private TextView textView;
@@ -54,6 +54,7 @@ public class HomeScreen extends AppCompatActivity
     private long timeElapsed;
     private boolean isPaused = false;
     private boolean isCounting = false;
+    private boolean isStopped = false;
 
 
     @Override
@@ -134,6 +135,7 @@ public class HomeScreen extends AppCompatActivity
         pauseButton.setVisibility(View.VISIBLE);
         isCounting = true;
         isPaused = false;
+        isStopped = false;
 
     }
 
@@ -145,7 +147,8 @@ public class HomeScreen extends AppCompatActivity
             isBR = false;
         }
         isPaused = true;
-        isCounting = false;
+        isCounting = true;
+        isStopped = false;
         playButton.setVisibility(View.VISIBLE);
         pauseButton.setVisibility(View.GONE);
 
@@ -159,11 +162,17 @@ public class HomeScreen extends AppCompatActivity
         }
         isPaused = false;
         isCounting = false;
-        timeElapsed = (long)0;
 
         playButton.setVisibility(View.VISIBLE);
         pauseButton.setVisibility(View.GONE);
-//        displayTime.setText("00:00:00");
+        if(isStopped){
+            timeElapsed = 0;
+            displayTime.setText("00:00:00");
+            isStopped = false;
+        } else {
+            isStopped = true ;
+        }
+
 
     }
 
@@ -171,7 +180,6 @@ public class HomeScreen extends AppCompatActivity
         @Override
         public void onReceive(Context context, Intent intent) {
             timeElapsed = intent.getLongExtra("elapsed_time", (long)0);
-
             displayTime.setText(formatTime(timeElapsed));
 //            Log.d("Counter", intent.getStringExtra("counter"));
         }
@@ -250,9 +258,9 @@ public class HomeScreen extends AppCompatActivity
 //            Intent intent = new Intent(this,HomeScreen.class);
 //            startActivity(intent);
 
-         if (id == R.id.nav_nutrition_screen) {
+        if (id == R.id.nav_nutrition_screen) {
             Intent intent = new Intent(this,NutritionScreen.class);
-             //set proper flags
+            //set proper flags
 
             startActivity(intent);
 
@@ -277,24 +285,25 @@ public class HomeScreen extends AppCompatActivity
         textView.setText(numSteps + TEXT_NUM_STEPS);
         sensorManager.registerListener(this, accel, SensorManager.SENSOR_DELAY_NORMAL);
         //resume br listener
-        if(!isBR){
-            registerReceiver(broadcastReceiver, new IntentFilter(StepCounterService.BROADCAST_ACTION));
-            isBR = true;
-        }
+
 
         if(isPaused) {
-            playButton.setVisibility(View.GONE);
-            pauseButton.setVisibility(View.VISIBLE);
-        } else {
             playButton.setVisibility(View.VISIBLE);
             pauseButton.setVisibility(View.GONE);
         }
 
         if(isCounting) {
             displayTime.setText(formatTime(timeElapsed));
+//            playButton.setVisibility(View.GONE);
+//            pauseButton.setVisibility(View.VISIBLE);
         } else {
             timeElapsed = 0;
             displayTime.setText(formatTime(timeElapsed));
+        }
+
+        if(!isBR && !isPaused){
+            registerReceiver(broadcastReceiver, new IntentFilter(StepCounterService.BROADCAST_ACTION));
+            isBR = true;
         }
 
     }
