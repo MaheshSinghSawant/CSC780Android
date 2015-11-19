@@ -114,9 +114,6 @@ public class HomeScreen extends AppCompatActivity
         simpleStepDetector = new SimpleStepDetector();
         simpleStepDetector.registerListener(this);
 
-
-
-
     }
 
 
