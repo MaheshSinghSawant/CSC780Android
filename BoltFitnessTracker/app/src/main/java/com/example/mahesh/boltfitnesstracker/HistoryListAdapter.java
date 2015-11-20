@@ -41,12 +41,12 @@ public class HistoryListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowview = inflater.inflate(R.layout.each_list_item,parent,false);
+        View rowview = inflater.inflate(R.layout.each_list_item_history,parent,false);
 
 
         // code for rowview : one day of history in this case it just says hi.
         //but you can add the function to get the history data
-        //say if you want to add steps on that day make corresponding view in each_list_item and add its here with function call
+        //say if you want to add steps on that day make corresponding view in each_list_item_history and add its here with function call
 
         TextView time_item = (TextView) rowview.findViewById(R.id.time_item);
         time_item.setText("Duration: ");
@@ -55,7 +55,7 @@ public class HistoryListAdapter extends BaseAdapter {
         distance_item.setText("Distance Covered:");
 
         TextView calories_item = (TextView) rowview.findViewById(R.id.calories_item);
-        calories_item.setText("Duration");
+        calories_item.setText("Calories Expended");
 
         return rowview;
     }
