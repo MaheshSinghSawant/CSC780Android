@@ -41,3 +41,9 @@ Week 7:
 
 a.Researched changes made to user permissions for google fit while operating on marshmallow.
 b.Implemented Google Fit like animation on Nutrition page.
+
+Week 8:
+
+a. Implemented Chronometer as a service.
+b. Nutrition screen now has search button to add food items eaten from api and add calories which adds up in the progress wheel.
+
