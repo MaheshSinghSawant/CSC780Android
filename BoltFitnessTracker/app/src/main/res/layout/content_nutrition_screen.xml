@@ -20,13 +20,33 @@
         android:layout_height="wrap_content" />
 
 
-    <Button
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:onClick="onSubmit"-->
+        <!--android:layout_below="@+id/search"-->
+        <!--android:text="Submit"-->
+        <!--android:id="@+id/searchbutton"-->
+        <!--/>-->
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/searchbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onSubmit"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        fancy:fb_borderColor="#FFFFFF"
+        fancy:fb_borderWidth="1dp"
+        fancy:fb_defaultColor="#006064"
+        fancy:fb_focusColor="#0097A7"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="30dp"
+        fancy:fb_text="Enter Food Item You had Today !"
+        fancy:fb_textColor="#FFFFFF"
         android:layout_below="@+id/search"
-        android:text="Submit"
-        android:id="@+id/searchbutton"
+        android:onClick="onSubmit"
         />
 
     <TextView
@@ -46,7 +66,9 @@
         android:id="@+id/dynamicArcView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/searchbutton"/>
+        android:layout_below="@+id/searchbutton"
+
+        />
 
     <TextView
         android:layout_width="wrap_content"

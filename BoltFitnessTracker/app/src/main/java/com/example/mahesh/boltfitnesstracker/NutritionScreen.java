@@ -57,7 +57,9 @@ public class NutritionScreen extends AppCompatActivity
 
             calories = bundle.getDouble("calories");
             count = count + calories;
-            textView.setText(Double.toString(count));
+            String s = Double.toString(count);
+            //textView.setText(Double.toString(count));
+            textView.setText(s);
 
 
         }
@@ -109,7 +111,7 @@ public class NutritionScreen extends AppCompatActivity
 
                 decoView.addEvent(new DecoEvent.Builder(this_is_float)
                         .setIndex(series1Index)
-                        .setDelay(5000)
+                        .setDelay(2000)
                         .build());
 
             }
