@@ -42,6 +42,8 @@ public class HomeScreen extends AppCompatActivity
     TextView chronometerView;
     private boolean isBR = false;
     private TextView displayTime;
+    private TextView userName;
+    private TextView calories_burnt;
 
     private FancyButton playButton;
     private FancyButton pauseButton;
@@ -52,6 +54,7 @@ public class HomeScreen extends AppCompatActivity
     private static final String stop = "STOP";
 
     private long timeElapsed;
+    private int calories;
     private boolean isPaused = false;
     private boolean isCounting = false;
     private boolean isStopped = false;
@@ -89,10 +92,14 @@ public class HomeScreen extends AppCompatActivity
 //        chronometerView.setTypeface(myTypeface);
 
         displayTime = (TextView) findViewById(R.id.display_time);
-        Typeface myTypeface = Typeface.createFromAsset(this.getAssets(),"DS-DIGI.TTF");
+        Typeface myTypeface = Typeface.createFromAsset(this.getAssets(), "DS-DIGI.TTF");
         displayTime.setTypeface(myTypeface);
 
+        userName = (TextView) findViewById(R.id.username);
+        String text = getIntent().getStringExtra("Name");
+        userName.setText(text);
 
+        calories_burnt = (TextView) findViewById(R.id.kcal);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -178,6 +185,8 @@ public class HomeScreen extends AppCompatActivity
         public void onReceive(Context context, Intent intent) {
             timeElapsed = intent.getLongExtra("elapsed_time", (long)0);
             displayTime.setText(formatTime(timeElapsed));
+            calories = intent.getIntExtra("calories_burnt", (int) 0);
+            calories_burnt.setText(String.valueOf(calories));
 //            Log.d("Counter", intent.getStringExtra("counter"));
         }
     };

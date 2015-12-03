@@ -6,7 +6,7 @@
 
     <string name="action_settings">Settings</string>
 
-                        <!--Navigation Drawer String values-->
+    <!--Navigation Drawer String values-->
 
     <string name="title_activity_nutrition_screen">Nutrition</string>
     <string name="title_activity_history_screen">History</string>
@@ -20,6 +20,7 @@
     <string name="history_screen_drawer_item">History</string>
     <string name="statistics_screen_drawer_item">Statistics</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_login_screen1">LoginScreen1</string>
 
 
 </resources>

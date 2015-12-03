@@ -75,31 +75,10 @@ public class StepCounterService extends Service{
 //                        - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timeElapsed))
 //        );
 
+        int calories = (int)(timeElapsed * 0.0003);
         intent.putExtra("elapsed_time", timeElapsed);
+        intent.putExtra("calories_burnt", calories);
         sendBroadcast(intent);
 
     }
-//    @Override
-//    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-//    }
-//
-//    @Override
-//    public void onSensorChanged(SensorEvent event) {
-//        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-//            simpleStepDetector.updateAccel(
-//                    event.timestamp, event.values[0], event.values[1], event.values[2]);
-//        }
-//    }
-//
-//    @Override
-//    public void step(long timeNs) {
-//        numSteps++;
-////        textView.setText(numSteps + TEXT_NUM_STEPS);
-//    }
-//
-//    @Override
-//    public void onDestroy(){
-//        super.onDestroy();
-//        sensorManager.unregisterListener(this);
-//    }
 }
