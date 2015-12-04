@@ -97,7 +97,7 @@ public class HomeScreen extends AppCompatActivity
 
         userName = (TextView) findViewById(R.id.username);
         String text = getIntent().getStringExtra("Name");
-        userName.setText(text);
+        //userName.setText("Welcome, "+text);
 
         calories_burnt = (TextView) findViewById(R.id.kcal);
 

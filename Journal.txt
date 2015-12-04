@@ -47,3 +47,10 @@ Week 8:
 a. Implemented Chronometer as a service.
 b. Nutrition screen now has search button to add food items eaten from api and add calories which adds up in the progress wheel.
 
+Week 9:
+
+a.Implemented google+ sign in.
+b.Implemented Calorie counter.
+c. Changes in map, UI.
+d.Worked on ActivityRecognition. 
+
