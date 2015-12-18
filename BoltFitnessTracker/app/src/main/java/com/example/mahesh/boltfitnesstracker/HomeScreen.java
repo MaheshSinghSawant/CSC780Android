@@ -84,12 +84,7 @@ public class HomeScreen extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-//        findViewById(R.id.play_timer).setOnClickListener(this);
-//        findViewById(R.id.stop_timer).setOnClickListener(this);
-//        chronometer = (Chronometer) findViewById(R.id.chronometer);
-//        Typeface myTypeface = Typeface.createFromAsset(this.getAssets(),"DS-DIGI.TTF");
-//        chronometerView = (TextView) findViewById(R.id.chronometer);
-//        chronometerView.setTypeface(myTypeface);
+
 
         displayTime = (TextView) findViewById(R.id.display_time);
         Typeface myTypeface = Typeface.createFromAsset(this.getAssets(), "DS-DIGI.TTF");
@@ -211,7 +206,7 @@ public class HomeScreen extends AppCompatActivity
 
     public void goToMap(View v){
 
-        Intent intent = new Intent(this,MapsActivity.class);
+        Intent intent = new Intent(this,LocationTrackingActivity.class);
         startActivity(intent);
 
     }
@@ -356,4 +351,10 @@ public class HomeScreen extends AppCompatActivity
         numSteps++;
         textView.setText(numSteps + TEXT_NUM_STEPS );
     }
+
+//     @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//      stopService(new Intent(this, StepCounterService.class));
+//    }
 }

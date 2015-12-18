@@ -17,17 +17,10 @@
     <EditText
         android:id="@+id/search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="Enter Food item you had today!"/>
 
 
-    <!--<Button-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:onClick="onSubmit"-->
-        <!--android:layout_below="@+id/search"-->
-        <!--android:text="Submit"-->
-        <!--android:id="@+id/searchbutton"-->
-        <!--/>-->
 
     <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/searchbutton"
@@ -43,7 +36,7 @@
         fancy:fb_focusColor="#0097A7"
         fancy:fb_iconPosition="left"
         fancy:fb_radius="30dp"
-        fancy:fb_text="Enter Food Item You had Today !"
+        fancy:fb_text="Search!"
         fancy:fb_textColor="#FFFFFF"
         android:layout_below="@+id/search"
         android:onClick="onSubmit"

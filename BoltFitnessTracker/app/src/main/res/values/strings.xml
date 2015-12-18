@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">BoltFitnessTracker</string>
 
+    <!--Place API keys here-->
+    <string name="google_maps_key">AIzaSyD8Gv3e4EK4nS1DB6wnlAX_RuaR_qF9LdM</string>
+    <string name="sign_in_key">AIzaSyCZkIV1G3lJGGr8Q9rDgV8ZqeT11CS-A14</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
-
-    <!--Navigation Drawer String values-->
-
     <string name="title_activity_nutrition_screen">Nutrition</string>
     <string name="title_activity_history_screen">History</string>
     <string name="title_activity_statistics_screen">Statistics</string>
@@ -21,6 +21,7 @@
     <string name="statistics_screen_drawer_item">Statistics</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_login_screen1">LoginScreen1</string>
+    <string name="title_activity_location_tracking">LocationTrackingActivity</string>
 
 
 </resources>

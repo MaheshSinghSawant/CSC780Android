@@ -53,7 +53,11 @@ public class StepCounterService extends Service{
         handler.removeCallbacks(sendUpdates);
         handler.postDelayed(sendUpdates, 1000);
 
+        //stopSelf();
+
         return START_STICKY;
+
+
     }
 
     private Runnable sendUpdates = new Runnable() {
