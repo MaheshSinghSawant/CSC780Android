@@ -12,12 +12,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AnticipateInterpolator;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.hookedonplay.decoviewlib.DecoView;
-import com.hookedonplay.decoviewlib.charts.DecoDrawEffect;
 import com.hookedonplay.decoviewlib.charts.SeriesItem;
 import com.hookedonplay.decoviewlib.events.DecoEvent;
 
@@ -183,13 +181,6 @@ public class NutritionScreen extends AppCompatActivity
 //            Intent intent = new Intent(this,NutritionScreen.class);
 //            startActivity(intent);
 
-        } else if (id == R.id.nav_history_screen) {
-            Intent intent = new Intent(this,HistoryScreen.class);
-            startActivity(intent);
-
-        } else if (id == R.id.nav_statistics_screen) {
-            Intent intent = new Intent(this,StatisticsScreen.class);
-            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

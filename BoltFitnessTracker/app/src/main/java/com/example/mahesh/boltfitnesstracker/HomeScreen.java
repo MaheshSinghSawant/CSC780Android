@@ -265,13 +265,6 @@ public class HomeScreen extends AppCompatActivity
 
             startActivity(intent);
 
-        } else if (id == R.id.nav_history_screen) {
-            Intent intent = new Intent(this,HistoryScreen.class);
-            startActivity(intent);
-
-        } else if (id == R.id.nav_statistics_screen) {
-            Intent intent = new Intent(this,StatisticsScreen.class);
-            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

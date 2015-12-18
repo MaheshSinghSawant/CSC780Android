@@ -6,10 +6,6 @@
             android:title="@string/home_screen_name_drawer_item" />
         <item android:id="@+id/nav_nutrition_screen" android:icon="@drawable/nutrition_icon"
             android:title="@string/nutrition_screen_name_drawer_item" />
-        <item android:id="@+id/nav_history_screen" android:icon="@drawable/history_icon"
-            android:title="@string/history_screen_name_drawer_item" />
-        <item android:id="@+id/nav_statistics_screen" android:icon="@drawable/statistics_icon"
-            android:title="@string/statistics_screen_name_drawer_item" />
     </group>
 
     <!--<item android:title="Communicate">-->

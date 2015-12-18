@@ -34,14 +34,6 @@
             android:name=".NutritionScreen"
             android:label="@string/title_activity_nutrition_screen"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".HistoryScreen"
-            android:label="@string/title_activity_history_screen"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".StatisticsScreen"
-            android:label="@string/title_activity_statistics_screen"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ListOfActivities" />
 
         <meta-data
