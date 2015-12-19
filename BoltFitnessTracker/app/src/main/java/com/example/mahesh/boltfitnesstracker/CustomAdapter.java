@@ -12,9 +12,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-/**
- * Created by Mahesh on 11/17/15.
- */
 public class CustomAdapter extends BaseAdapter {
 
     private List<Response.HitsEntity> mFooditem;
@@ -56,11 +53,6 @@ public class CustomAdapter extends BaseAdapter {
         Picasso.with(context).load(imageurl).into(thumbnail);
         title.setText((item.getRecipe().getLabel()));
         cal.setText(Double.toString(calo));
-
-
-
-
-
         return rowview;
     }
 }

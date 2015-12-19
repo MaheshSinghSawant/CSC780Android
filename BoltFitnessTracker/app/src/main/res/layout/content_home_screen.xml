@@ -42,7 +42,6 @@
         android:fontFamily="sans-serif"
         android:textSize="5dp"
         android:layout_centerHorizontal="true"
-
         android:textColor="#006064"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -91,20 +90,6 @@
         android:layout_marginTop="175dp"
         />
 
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/bpm"-->
-        <!--android:fontFamily="sans-serif"-->
-        <!--android:textSize="18dp"-->
-        <!--android:textColor="#006064"-->
-        <!--android:text="bpm"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_marginLeft="130dp"-->
-        <!--android:layout_marginTop="225dp"-->
-        <!--/>-->
-
 
     <View
         android:layout_width="match_parent"
@@ -126,45 +111,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="360dp"
         />
-
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/kmph"-->
-        <!--android:fontFamily="sans-serif"-->
-        <!--android:textSize="18dp"-->
-        <!--android:textColor="#006064"-->
-        <!--android:text="kmph"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_marginLeft="275dp"-->
-        <!--android:layout_marginTop="225dp"-->
-        <!--/>-->
-
-
-    <!--<mehdi.sakout.fancybuttons.FancyButton-->
-        <!--android:id="@+id/btn_select_activity"-->
-        <!--android:layout_width="350dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:paddingBottom="10dp"-->
-        <!--android:paddingLeft="20dp"-->
-        <!--android:paddingRight="20dp"-->
-        <!--android:paddingTop="10dp"-->
-        <!--fancy:fb_borderColor="#FFFFFF"-->
-        <!--fancy:fb_borderWidth="1dp"-->
-        <!--fancy:fb_defaultColor="#006064"-->
-        <!--fancy:fb_focusColor="#0097A7"-->
-        <!--fancy:fb_fontIconResource="&#xf1e3;"-->
-        <!--fancy:fb_iconPosition="left"-->
-        <!--fancy:fb_radius="30dp"-->
-        <!--fancy:fb_text="SELECT AN ACTIVITY"-->
-        <!--fancy:fb_textColor="#FFFFFF"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginBottom="150dp"-->
-        <!--android:onClick="showActivities"-->
-        <!--/>-->
 
     <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/calories_burnt_icon"
@@ -192,7 +138,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        fancy:fb_fontIconResource="&#xf21d;"
+        fancy:fb_fontIconResource="&#xf1b0;"
         fancy:fb_iconPosition="left"
         fancy:fb_fontIconSize ="40dp"
         fancy:fb_radius="30dp"
@@ -205,45 +151,6 @@
         fancy:fb_defaultColor="#00ffffff"
         />
 
-    <!--<mehdi.sakout.fancybuttons.FancyButton-->
-        <!--android:id="@+id/speed_icon"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:paddingBottom="10dp"-->
-        <!--android:paddingTop="10dp"-->
-        <!--fancy:fb_fontIconResource="&#xf0e4;"-->
-        <!--fancy:fb_iconPosition="left"-->
-        <!--fancy:fb_fontIconSize ="40dp"-->
-        <!--fancy:fb_radius="30dp"-->
-        <!--fancy:fb_textColor="#607D8B"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_marginLeft="180dp"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginTop="205dp"-->
-        <!--fancy:fb_defaultColor="#00ffffff"-->
-        <!--/>-->
-
-
-
-    <!--<mehdi.sakout.fancybuttons.FancyButton-->
-        <!--android:id="@+id/heartbeat_icon"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:paddingBottom="10dp"-->
-        <!--android:paddingTop="10dp"-->
-        <!--fancy:fb_fontIconResource="&#xf21e;"-->
-        <!--fancy:fb_iconPosition="left"-->
-        <!--fancy:fb_fontIconSize ="40dp"-->
-        <!--fancy:fb_radius="30dp"-->
-        <!--fancy:fb_textColor="#B71C1C"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_marginLeft="30dp"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginTop="205dp"-->
-        <!--fancy:fb_defaultColor="#00ffffff"-->
-        <!--/>-->
 
     <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/pause_timer"
@@ -320,6 +227,10 @@
         android:onClick="goToMap"
 
         />
+
+
+
+
     <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/activity_run"
         android:layout_width="60dp"
@@ -327,7 +238,7 @@
         android:padding="10dp"
         fancy:fb_defaultColor="#006064"
         fancy:fb_focusColor="#313131"
-        fancy:fb_fontIconResource="&#xf17d;"
+        fancy:fb_fontIconResource="&#xf21d;"
         fancy:fb_fontIconSize ="30dp"
         fancy:fb_iconPaddingLeft="0dp"
         fancy:fb_iconPaddingRight="0dp"
@@ -335,10 +246,27 @@
         fancy:fb_textColor="#FFFFFF"
         android:layout_marginTop="285dp"
         android:layout_marginLeft="30dp"
-        android:onClick="goHome"
+        android:onClick="showRunning"
         />
     <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/activity_walk"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:padding="10dp"
+        fancy:fb_defaultColor="#006064"
+        fancy:fb_focusColor="#313131"
+        fancy:fb_fontIconResource="&#xf183;"
+        fancy:fb_fontIconSize ="30dp"
+        fancy:fb_iconPaddingLeft="0dp"
+        fancy:fb_iconPaddingRight="0dp"
+        fancy:fb_radius="64dp"
+        fancy:fb_textColor="#FFFFFF"
+        android:layout_marginTop="285dp"
+        android:layout_marginLeft="140dp"
+        android:onClick="showWalking"
+        />
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/activity_bicycle"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:padding="10dp"
@@ -351,27 +279,8 @@
         fancy:fb_radius="64dp"
         fancy:fb_textColor="#FFFFFF"
         android:layout_marginTop="285dp"
-        android:layout_marginLeft="140dp"
-        android:onClick="goHome"
-        />
-    <mehdi.sakout.fancybuttons.FancyButton
-        android:id="@+id/activity_bicycle"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:padding="10dp"
-        fancy:fb_defaultColor="#006064"
-        fancy:fb_focusColor="#313131"
-        fancy:fb_fontIconResource="&#xf1e3;"
-        fancy:fb_fontIconSize ="30dp"
-        fancy:fb_iconPaddingLeft="0dp"
-        fancy:fb_iconPaddingRight="0dp"
-        fancy:fb_radius="64dp"
-        fancy:fb_textColor="#FFFFFF"
-        android:layout_marginTop="285dp"
         android:layout_marginLeft="250dp"
-        android:onClick="goHome"
+        android:onClick="showBicycle"
         />
-
-
 
 </RelativeLayout>

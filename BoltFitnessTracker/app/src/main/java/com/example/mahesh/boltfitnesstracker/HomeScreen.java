@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.concurrent.TimeUnit;
 
@@ -92,7 +93,7 @@ public class HomeScreen extends AppCompatActivity
 
         userName = (TextView) findViewById(R.id.username);
         String text = getIntent().getStringExtra("Name");
-        //userName.setText("Welcome, "+text);
+
 
         calories_burnt = (TextView) findViewById(R.id.kcal);
 
@@ -108,14 +109,25 @@ public class HomeScreen extends AppCompatActivity
 
         textView = (TextView) findViewById(R.id.step_count);
         textView.setTextSize(30);
-//        setContentView(textView);
 
-        // Get an instance of the SensorManager
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         simpleStepDetector = new SimpleStepDetector();
         simpleStepDetector.registerListener(this);
 
+    }
+
+    public void showRunning(View view){
+
+        Toast.makeText(getApplicationContext(), "Running activity selected",Toast.LENGTH_LONG).show();
+    }
+    public void showWalking(View view){
+
+        Toast.makeText(getApplicationContext(), "Walking activity selected",Toast.LENGTH_LONG).show();
+    }
+    public void showBicycle(View view){
+
+        Toast.makeText(getApplicationContext(), "Bicycle activity selected",Toast.LENGTH_LONG).show();
     }
 
 
@@ -142,7 +154,6 @@ public class HomeScreen extends AppCompatActivity
         stopService(new Intent(this, StepCounterService.class));
         if(isBR){
             unregisterReceiver(broadcastReceiver);
-//            stopService(new Intent(this, StepCounterService.class));
             isBR = false;
         }
         isPaused = true;
@@ -182,7 +193,7 @@ public class HomeScreen extends AppCompatActivity
             displayTime.setText(formatTime(timeElapsed));
             calories = intent.getIntExtra("calories_burnt", (int) 0);
             calories_burnt.setText(String.valueOf(calories));
-//            Log.d("Counter", intent.getStringExtra("counter"));
+
         }
     };
 
@@ -195,26 +206,12 @@ public class HomeScreen extends AppCompatActivity
                         - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timeElapsed)) );
     }
 
-    public void showActivities(View v){
-
-        Intent intent = new Intent(this,ListOfActivities.class);
-        startActivity(intent);
-
-    }
-
-
-
     public void goToMap(View v){
 
         Intent intent = new Intent(this,LocationTrackingActivity.class);
         startActivity(intent);
 
     }
-
-
-
-
-
 
     @Override
     public void onBackPressed() {
@@ -228,19 +225,17 @@ public class HomeScreen extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.home_screen, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+
         if (id == R.id.action_settings) {
             return true;
         }
@@ -251,18 +246,10 @@ public class HomeScreen extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
-
-//        if (id == R.id.nav_home_screen) {
-//            // Handle the home action
-//            Intent intent = new Intent(this,HomeScreen.class);
-//            startActivity(intent);
-
         if (id == R.id.nav_nutrition_screen) {
             Intent intent = new Intent(this,NutritionScreen.class);
-            //set proper flags
-
             startActivity(intent);
 
         }
@@ -278,8 +265,6 @@ public class HomeScreen extends AppCompatActivity
         numSteps = 0;
         textView.setText(numSteps + TEXT_NUM_STEPS);
         sensorManager.registerListener(this, accel, SensorManager.SENSOR_DELAY_NORMAL);
-        //resume br listener
-
 
         if(isPaused) {
             playButton.setVisibility(View.VISIBLE);
@@ -288,8 +273,7 @@ public class HomeScreen extends AppCompatActivity
 
         if(isCounting) {
             displayTime.setText(formatTime(timeElapsed));
-//            playButton.setVisibility(View.GONE);
-//            pauseButton.setVisibility(View.VISIBLE);
+
         } else {
             timeElapsed = 0;
             displayTime.setText(formatTime(timeElapsed));
@@ -345,9 +329,5 @@ public class HomeScreen extends AppCompatActivity
         textView.setText(numSteps + TEXT_NUM_STEPS );
     }
 
-//     @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//      stopService(new Intent(this, StepCounterService.class));
-//    }
+
 }
